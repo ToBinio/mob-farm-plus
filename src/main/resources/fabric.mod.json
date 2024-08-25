@@ -1,0 +1,44 @@
+{
+	"schemaVersion": 1,
+	"id": "mob-farm-plus",
+	"version": "${version}",
+	"name": "Mob Farm Plus",
+	"description": "This is an example description! Tell everyone what your mod is about!",
+	"authors": [
+		"Me!"
+	],
+	"contact": {
+		"homepage": "https://fabricmc.net/",
+		"sources": "https://github.com/FabricMC/fabric-example-mod"
+	},
+	"license": "CC0-1.0",
+	"icon": "assets/mob-farm-plus/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"tobinio.mobfarmplus.MobFarmPlus"
+		],
+		"client": [
+			"tobinio.mobfarmplus.MobFarmPlusClient"
+		],
+		"fabric-datagen": [
+			"tobinio.mobfarmplus.MobFarmPlusDataGenerator"
+		]
+	},
+	"mixins": [
+		"mob-farm-plus.mixins.json",
+		{
+			"config": "mob-farm-plus.client.mixins.json",
+			"environment": "client"
+		}
+	],
+	"depends": {
+		"fabricloader": ">=0.16.2",
+		"minecraft": "~1.21",
+		"java": ">=21",
+		"fabric-api": "*"
+	},
+	"suggests": {
+		"another-mod": "*"
+	}
+}

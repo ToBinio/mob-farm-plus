@@ -1,0 +1,11 @@
+{
+	"required": true,
+	"package": "tobinio.mobfarmplus.mixin.client",
+	"compatibilityLevel": "JAVA_21",
+	"client": [
+		"ExampleClientMixin"
+	],
+	"injectors": {
+		"defaultRequire": 1
+	}
+}
