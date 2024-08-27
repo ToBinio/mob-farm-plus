@@ -3,6 +3,7 @@ package tobinio.mobfarmplus.blocks.custom.fan;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Box;
 import net.minecraft.util.math.Direction;
@@ -20,6 +21,9 @@ public class FanBlockEntity extends BlockEntity {
     }
 
     public static void tick(World world, BlockPos pos, BlockState state, FanBlockEntity blockEntity) {
+        if (!FanBlock.isActive(state)) {
+            return;
+        }
 
         int maxDistance = FanBlock.getEffectDistance();
 

@@ -8,6 +8,7 @@ import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.state.StateManager;
+import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.DirectionProperty;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.math.BlockPos;
@@ -27,9 +28,13 @@ import tobinio.mobfarmplus.particle.ModParticleTypes;
  */
 public class FanBlock extends BlockWithEntity {
     public static final DirectionProperty FACING = Properties.FACING;
+    public static final BooleanProperty ACTIVE = BooleanProperty.of("active");
 
     public FanBlock(Settings settings) {
         super(settings);
+
+        this.setDefaultState(this.stateManager.getDefaultState().with(FACING, Direction.NORTH).with(ACTIVE, false));
+
     }
 
     @Override
@@ -40,6 +45,7 @@ public class FanBlock extends BlockWithEntity {
     @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
         builder.add(FACING);
+        builder.add(ACTIVE);
     }
 
     @Override
@@ -64,12 +70,23 @@ public class FanBlock extends BlockWithEntity {
     }
 
     @Override
-    public @Nullable BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
-        return new FanBlockEntity(pos, state);
+    protected void neighborUpdate(BlockState state, World world, BlockPos pos, Block sourceBlock, BlockPos sourcePos,
+            boolean notify) {
+        if (!world.isClient) {
+            boolean bl = state.get(ACTIVE);
+            if (bl != world.isReceivingRedstonePower(pos)) {
+                world.setBlockState(pos, state.cycle(ACTIVE), Block.NOTIFY_LISTENERS);
+            }
+        }
     }
 
     @Override
     public void randomDisplayTick(BlockState state, World world, BlockPos pos, Random random) {
+
+        if (!isActive(state)) {
+            return;
+        }
+
         Direction direction = state.get(FACING);
 
         Vec3d centerPos = pos.toCenterPos();
@@ -83,8 +100,17 @@ public class FanBlock extends BlockWithEntity {
                 direction.getOffsetZ() * (getEffectDistance() + 1));
     }
 
+    public static boolean isActive(BlockState state) {
+        return state.get(ACTIVE);
+    }
+
     public static int getEffectDistance() {
         return 20;
+    }
+
+    @Override
+    public @Nullable BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
+        return new FanBlockEntity(pos, state);
     }
 
     @Override
