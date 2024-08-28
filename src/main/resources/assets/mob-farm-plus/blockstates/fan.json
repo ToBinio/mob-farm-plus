@@ -1,0 +1,56 @@
+{
+  "variants": {
+    "facing=down,active=true": {
+      "model": "mob-farm-plus:block/fan_spinning",
+      "x": 180
+    },
+    "facing=down,active=false": {
+      "model": "mob-farm-plus:block/fan_still",
+      "x": 180
+    },
+    "facing=east,active=true": {
+      "model": "mob-farm-plus:block/fan_spinning",
+      "x": 90,
+      "y": 90
+    },
+    "facing=east,active=false": {
+      "model": "mob-farm-plus:block/fan_still",
+      "x": 90,
+      "y": 90
+    },
+    "facing=north,active=true": {
+      "model": "mob-farm-plus:block/fan_spinning",
+      "x": 90
+    },
+    "facing=north,active=false": {
+      "model": "mob-farm-plus:block/fan_still",
+      "x": 90
+    },
+    "facing=south,active=true": {
+      "model": "mob-farm-plus:block/fan_spinning",
+      "x": 90,
+      "y": 180
+    },
+    "facing=south,active=false": {
+      "model": "mob-farm-plus:block/fan_still",
+      "x": 90,
+      "y": 180
+    },
+    "facing=up,active=true": {
+      "model": "mob-farm-plus:block/fan_spinning"
+    },
+    "facing=up,active=false": {
+      "model": "mob-farm-plus:block/fan_still"
+    },
+    "facing=west,active=true": {
+      "model": "mob-farm-plus:block/fan_spinning",
+      "x": 90,
+      "y": 270
+    },
+    "facing=west,active=false": {
+      "model": "mob-farm-plus:block/fan_still",
+      "x": 90,
+      "y": 270
+    }
+  }
+}

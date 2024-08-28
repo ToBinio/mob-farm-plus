@@ -1,0 +1,6 @@
+{
+	"parent": "mob-farm-plus:block/fan_still",
+	"textures": {
+		"1": "mob-farm-plus:block/fan_spinning"
+	}
+}
