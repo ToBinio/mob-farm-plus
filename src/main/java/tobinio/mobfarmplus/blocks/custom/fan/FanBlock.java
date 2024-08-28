@@ -65,11 +65,6 @@ public class FanBlock extends BlockWithEntity {
     }
 
     @Override
-    protected void scheduledTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
-        super.scheduledTick(state, world, pos, random);
-    }
-
-    @Override
     protected void neighborUpdate(BlockState state, World world, BlockPos pos, Block sourceBlock, BlockPos sourcePos,
             boolean notify) {
         if (!world.isClient) {
