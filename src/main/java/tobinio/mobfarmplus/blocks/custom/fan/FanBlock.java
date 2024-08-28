@@ -95,16 +95,16 @@ public class FanBlock extends BlockWithEntity {
                 centerPos.getX() + (direction.getOffsetX() == 0 ? random.nextDouble() * 0.8 - 0.4 : 0),
                 centerPos.getY() + (direction.getOffsetY() == 0 ? random.nextDouble() * 0.8 - 0.4 : 0),
                 centerPos.getZ() + (direction.getOffsetZ() == 0 ? random.nextDouble() * 0.8 - 0.4 : 0),
-                direction.getOffsetX() * (getEffectDistance() + 1),
-                direction.getOffsetY() * (getEffectDistance() + 1),
-                direction.getOffsetZ() * (getEffectDistance() + 1));
+                direction.getOffsetX() * (getMaxDistance() + 1),
+                direction.getOffsetY() * (getMaxDistance() + 1),
+                direction.getOffsetZ() * (getMaxDistance() + 1));
     }
 
     public static boolean isActive(BlockState state) {
         return state.get(ACTIVE);
     }
 
-    public static int getEffectDistance() {
+    public static int getMaxDistance() {
         return 20;
     }
 
