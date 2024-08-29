@@ -11,7 +11,6 @@ import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventories;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
-import net.minecraft.particle.ParticleTypes;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.text.Text;
@@ -22,6 +21,8 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.World;
 import tobinio.mobfarmplus.blocks.ModBlockEntityTypes;
+import tobinio.mobfarmplus.particle.ModParticleTypes;
+
 /**
  * Created: 28.08.24
  *
@@ -46,10 +47,10 @@ public class VacuumBlockEntity extends LootableContainerBlockEntity {
     }
 
     public static void clientTick(World world, BlockPos pos, BlockState state, VacuumBlockEntity blockEntity) {
-        spawnNautilusParticles(world, pos);
+        spawnParticles(world, pos);
     }
 
-    private static void spawnNautilusParticles(World world, BlockPos pos) {
+    private static void spawnParticles(World world, BlockPos pos) {
         Random random = world.random;
         Vec3d vec3d = new Vec3d((double) pos.getX() + 0.5, (double) pos.getY() + 1.5, (double) pos.getZ() + 0.5);
 
@@ -58,7 +59,7 @@ public class VacuumBlockEntity extends LootableContainerBlockEntity {
                 float f = random.nextFloat() * 3 - 1.5f;
                 float g = random.nextFloat() * 3 - 2.5f;
                 float h = random.nextFloat() * 3 - 1.5f;
-                world.addParticle(ParticleTypes.NAUTILUS,
+                world.addParticle(ModParticleTypes.VACUUM,
                         vec3d.x,
                         vec3d.y,
                         vec3d.z,

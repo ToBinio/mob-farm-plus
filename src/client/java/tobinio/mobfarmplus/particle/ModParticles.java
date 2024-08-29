@@ -1,6 +1,7 @@
 package tobinio.mobfarmplus.particle;
 
 import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
+import net.minecraft.client.particle.ConnectionParticle;
 import tobinio.mobfarmplus.particle.custom.FanParticle;
 
 /**
@@ -10,6 +11,8 @@ import tobinio.mobfarmplus.particle.custom.FanParticle;
  */
 public class ModParticles {
     public static void initialize() {
-        ParticleFactoryRegistry.getInstance().register(ModParticleTypes.FAN_PARTICLE, FanParticle.FanFactory::new);
+        ParticleFactoryRegistry.getInstance().register(ModParticleTypes.FAN, FanParticle.FanFactory::new);
+        ParticleFactoryRegistry.getInstance()
+                .register(ModParticleTypes.VACUUM, ConnectionParticle.NautilusFactory::new);
     }
 }

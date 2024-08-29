@@ -6,7 +6,6 @@ import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityTicker;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.item.ItemPlacementContext;
-import net.minecraft.server.world.ServerWorld;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.DirectionProperty;
@@ -92,7 +91,7 @@ public class FanBlock extends BlockWithEntity {
 
         Vec3d centerPos = pos.toCenterPos();
 
-        world.addImportantParticle(ModParticleTypes.FAN_PARTICLE,
+        world.addImportantParticle(ModParticleTypes.FAN,
                 centerPos.getX() + (direction.getOffsetX() == 0 ? random.nextDouble() * 0.8 - 0.4 : 0),
                 centerPos.getY() + (direction.getOffsetY() == 0 ? random.nextDouble() * 0.8 - 0.4 : 0),
                 centerPos.getZ() + (direction.getOffsetZ() == 0 ? random.nextDouble() * 0.8 - 0.4 : 0),

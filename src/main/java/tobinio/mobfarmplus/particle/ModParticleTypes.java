@@ -13,9 +13,13 @@ import tobinio.mobfarmplus.MobFarmPlus;
  * @author Tobias Frischmann
  */
 public class ModParticleTypes {
-    public static final SimpleParticleType FAN_PARTICLE = FabricParticleTypes.simple();
+    public static final SimpleParticleType FAN = FabricParticleTypes.simple();
+    public static final SimpleParticleType VACUUM = FabricParticleTypes.simple();
 
     public static void initialize() {
-        Registry.register(Registries.PARTICLE_TYPE, Identifier.of(MobFarmPlus.MOD_ID, "fan_particle"), FAN_PARTICLE);
+        Registry.register(Registries.PARTICLE_TYPE, Identifier.of(MobFarmPlus.MOD_ID, "fan"), FAN);
+        Registry.register(Registries.PARTICLE_TYPE,
+                Identifier.of(MobFarmPlus.MOD_ID, "vacuum"),
+                VACUUM);
     }
 }
