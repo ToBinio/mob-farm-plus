@@ -4,14 +4,17 @@ import net.fabricmc.fabric.api.transfer.v1.item.InventoryStorage;
 import net.fabricmc.fabric.api.transfer.v1.item.ItemVariant;
 import net.fabricmc.fabric.api.transfer.v1.transaction.Transaction;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.block.entity.LootableContainerBlockEntity;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.ItemEntity;
+import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventories;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.registry.RegistryWrapper;
+import net.minecraft.screen.ScreenHandler;
+import net.minecraft.text.Text;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Box;
@@ -19,7 +22,6 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.World;
 import tobinio.mobfarmplus.blocks.ModBlockEntityTypes;
-import tobinio.mobfarmplus.blocks.inventory.ImplementedInventory;
 
 import java.util.List;
 
@@ -28,8 +30,8 @@ import java.util.List;
  *
  * @author Tobias Frischmann
  */
-public class VacuumBlockEntity extends BlockEntity implements ImplementedInventory {
-    private final DefaultedList<ItemStack> items = DefaultedList.ofSize(5, ItemStack.EMPTY);
+public class VacuumBlockEntity extends LootableContainerBlockEntity {
+    private DefaultedList<ItemStack> items = DefaultedList.ofSize(5, ItemStack.EMPTY);
 
     public VacuumBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntityTypes.VACUUM_BLOCK_ENTITY_TYPE, pos, state);
@@ -91,11 +93,6 @@ public class VacuumBlockEntity extends BlockEntity implements ImplementedInvento
     }
 
     @Override
-    public DefaultedList<ItemStack> getItems() {
-        return items;
-    }
-
-    @Override
     public void readNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup registryLookup) {
         super.readNbt(nbt, registryLookup);
         Inventories.readNbt(nbt, items, registryLookup);
@@ -105,5 +102,30 @@ public class VacuumBlockEntity extends BlockEntity implements ImplementedInvento
     public void writeNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup registryLookup) {
         Inventories.writeNbt(nbt, items, registryLookup);
         super.writeNbt(nbt, registryLookup);
+    }
+
+    @Override
+    protected Text getContainerName() {
+        return Text.of("Vacuum");
+    }
+
+    @Override
+    protected DefaultedList<ItemStack> getHeldStacks() {
+        return items;
+    }
+
+    @Override
+    protected void setHeldStacks(DefaultedList<ItemStack> inventory) {
+        this.items = inventory;
+    }
+
+    @Override
+    protected ScreenHandler createScreenHandler(int syncId, PlayerInventory playerInventory) {
+        return null;
+    }
+
+    @Override
+    public int size() {
+        return 5;
     }
 }

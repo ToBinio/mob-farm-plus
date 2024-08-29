@@ -6,6 +6,7 @@ import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityTicker;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.entity.Entity;
+import net.minecraft.util.ItemScatterer;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
@@ -18,7 +19,6 @@ import tobinio.mobfarmplus.blocks.ModBlockEntityTypes;
  *
  * @author Tobias Frischmann
  */
-//TODO make inventory drop on block break
 public class VacuumBlock extends BlockWithEntity{
     protected static final VoxelShape SHAPE = Block.createCuboidShape(4.0, 4.0, 4.0, 12.0, 12.0, 12.0);
 
@@ -60,5 +60,11 @@ public class VacuumBlock extends BlockWithEntity{
         if (blockEntity instanceof VacuumBlockEntity vacuumBlockEntity) {
             VacuumBlockEntity.onEntityCollision(world, pos, state, entity, vacuumBlockEntity);
         }
+    }
+
+    @Override
+    protected void onStateReplaced(BlockState state, World world, BlockPos pos, BlockState newState, boolean moved) {
+        ItemScatterer.onStateReplaced(state, newState, world, pos);
+        super.onStateReplaced(state, world, pos, newState, moved);
     }
 }
