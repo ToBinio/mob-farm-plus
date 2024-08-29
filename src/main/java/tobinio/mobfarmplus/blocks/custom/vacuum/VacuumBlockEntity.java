@@ -22,9 +22,6 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.World;
 import tobinio.mobfarmplus.blocks.ModBlockEntityTypes;
-
-import java.util.List;
-
 /**
  * Created: 28.08.24
  *

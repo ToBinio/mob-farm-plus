@@ -42,10 +42,11 @@ public class FanBlockEntity extends BlockEntity {
                         pos.getY() + direction.getOffsetY() * affectiveDistance + 1,
                         pos.getZ() + direction.getOffsetZ() * affectiveDistance + 1));
 
+        var center = pos.toCenterPos();
         for (Entity entity : entities) {
-            var strength = getStrength() - strengthFallOff * Math.sqrt(entity.squaredDistanceTo(pos.getX(),
-                    pos.getY(),
-                    pos.getZ()));
+            var strength = getStrength() - strengthFallOff * Math.sqrt(entity.squaredDistanceTo(center.getX(),
+                    center.getY(),
+                    center.getZ()));
 
             entity.addVelocity(direction.getOffsetX() * strength,
                     direction.getOffsetY() * strength,
