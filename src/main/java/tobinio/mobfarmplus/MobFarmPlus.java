@@ -6,6 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import tobinio.mobfarmplus.blocks.ModBlockEntityTypes;
 import tobinio.mobfarmplus.blocks.ModBlocks;
+import tobinio.mobfarmplus.items.ModItemGroup;
 import tobinio.mobfarmplus.particle.ModParticleTypes;
 
 public class MobFarmPlus implements ModInitializer {
@@ -17,6 +18,8 @@ public class MobFarmPlus implements ModInitializer {
     public void onInitialize() {
         ModBlocks.initialize();
         ModBlockEntityTypes.initialize();
+
+        ModItemGroup.initialize();
 
         ModParticleTypes.initialize();
     }

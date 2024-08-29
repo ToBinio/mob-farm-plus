@@ -56,7 +56,13 @@ public class FanBlock extends BlockWithEntity {
             direction = direction.getOpposite();
         }
 
-        return this.getDefaultState().with(FACING, direction);
+        BlockState state = this.getDefaultState().with(FACING, direction);
+
+        if (ctx.getWorld().isReceivingRedstonePower(ctx.getBlockPos())) {
+            state = state.with(ACTIVE, true);
+        }
+
+        return state;
     }
 
     @Override
