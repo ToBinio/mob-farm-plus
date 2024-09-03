@@ -31,6 +31,7 @@ public class ModItemGroup {
         ItemGroupEvents.modifyEntriesEvent(ITEM_GROUP_KEY).register(itemGroup -> {
             itemGroup.add(ModBlocks.FAN.asItem());
             itemGroup.add(ModBlocks.VACUUM.asItem());
+            itemGroup.add(ModBlocks.SPIKE.asItem());
         });
     }
 }

@@ -8,6 +8,7 @@ import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 import tobinio.mobfarmplus.MobFarmPlus;
+import tobinio.mobfarmplus.blocks.custom.SpikeBlock;
 import tobinio.mobfarmplus.blocks.custom.fan.FanBlock;
 import tobinio.mobfarmplus.blocks.custom.vacuum.VacuumBlock;
 
@@ -19,6 +20,7 @@ import tobinio.mobfarmplus.blocks.custom.vacuum.VacuumBlock;
 public class ModBlocks {
     public static final Block FAN = register(new FanBlock(AbstractBlock.Settings.create()), "fan", true);
     public static final Block VACUUM = register(new VacuumBlock(AbstractBlock.Settings.create()), "vacuum", true);
+    public static final Block SPIKE = register(new SpikeBlock(AbstractBlock.Settings.create()), "spike", true);
 
     public static Block register(Block block, String name, boolean shouldRegisterItem) {
         Identifier id = Identifier.of(MobFarmPlus.MOD_ID, name);
