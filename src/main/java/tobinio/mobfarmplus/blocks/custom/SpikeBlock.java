@@ -30,7 +30,7 @@ public class SpikeBlock extends Block {
     @Override
     protected void onEntityCollision(BlockState state, World world, BlockPos pos, Entity entity) {
         if (entity instanceof LivingEntity) {
-            entity.damage(world.getDamageSources().generic(), 1.0F);
+            entity.damage(world.getDamageSources().generic(), 5.0F);
         }
     }
 }

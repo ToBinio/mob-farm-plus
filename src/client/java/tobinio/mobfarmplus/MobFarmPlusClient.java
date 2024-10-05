@@ -12,5 +12,6 @@ public class MobFarmPlusClient implements ClientModInitializer {
         ModParticles.initialize();
 
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.FAN, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.SPIKE, RenderLayer.getCutout());
     }
 }
